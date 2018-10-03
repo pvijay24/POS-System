@@ -1,0 +1,115 @@
+#:kivy 1.0
+
+<BarOptions>:
+	bt_newlist: newlist
+	bt_clearlist: clearbuylist
+	bt_finishlist: finishbuylist
+	bt_next: nextpage
+	bt_previous: previouspage
+	Button:
+		text: 'Close Session'
+		on_press: root.userLogout()
+	ButtonEx:
+		id: newlist
+		text: 'New List'
+		on_press: root.startNewBuyList()
+	ButtonEx:
+		id: clearbuylist
+		text: 'Clear List'
+		on_press: root.clearBuyList()
+	ButtonEx:
+		id: finishbuylist
+		text: 'Finish List'
+		on_press: root.finishBuyList()
+	ButtonEx:
+		id: nextpage
+		text: 'Next'
+		on_press: root.nextPage()
+	ButtonEx:
+		id: previouspage
+		text: 'Previous'
+		on_press: root.previousPage()
+	Button:
+		text: 'Menu'
+		on_press: root.loadMainWindow()
+
+
+<LoginScreen>:
+	username: ti_username
+	password: ti_password
+	orientation: 'vertical'
+
+	GridLayout:
+		cols: 2
+		Label:
+			text: 'User Name'
+		TextInput:
+			id: ti_username
+			multiline: False
+		Label:
+			text: 'Password'
+		TextInput:
+			id: ti_password
+			multiline: False
+
+	BoxLayout:
+		size_hint_y: 0.5
+		Button:
+			text: 'Cancel'
+			on_press: root.bt_cancel()
+		Button:
+			text: 'Login'
+			on_press: root.bt_login()
+
+
+<LogoutScreen>:
+	orientation: 'vertical'
+
+	Label:
+		text: 'Do you want to logout?'
+	BoxLayout:
+		Button:
+			text: 'No'
+			on_press: root.answerNo()
+		Button:
+			text: 'Yes'
+			on_press: root.answerYes()
+
+<Controller>:
+	a_articles: gd_articles
+	a_buylist: bl_buylist
+	a_baroptions: bl_btoptions
+	a_price: bl_price
+
+	BoxLayout:
+		orientation: 'vertical'
+
+		BoxLayout:
+			size_hint_y: 0.8
+
+
+			BoxLayout:
+
+				GridLayout:
+					id: gd_articles
+					size_hint_x: 0.7
+					cols: 3
+					rows: 3
+
+
+				BoxLayout:
+					id: bl_buylist
+					size_hint_x: 0.3
+					orientation: 'vertical'
+
+
+		BoxLayout:
+			size_hint_y: 0.2
+
+			BoxLayout:
+				id: bl_btoptions
+				size_hint_x: 0.7
+
+			BoxLayout:
+				id: bl_price
+				size_hint_x: 0.3
